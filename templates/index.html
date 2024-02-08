@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart Disease Prediction</title>
+    <script
+      src="https://kit.fontawesome.com/41cd1b066a.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+  </head>
+  <body class="flex font-sans h-[100vh]">
+    <div class="grow-[3] flex justify-center items-center">
+      <div class="w-3/4 h-2/3">
+        <div class="flex ml-6">
+          <i
+            class="fa-solid mt-3 fa-user-doctor fa-bounce mr-3 fa-xl"
+            style="color: #10b981"
+          ></i>
+          <h2 class="mb-4 text-3xl font-semibold text-emerald-500">
+            Doctor Helper
+          </h2>
+        </div>
+        <div class="container mt-5">
+          <form id="prediction-form" method="post" action="/predict">
+            <div class="flex form-group">
+              <label for="age">Age:</label>
+              <input
+                type="text"
+                class="w-1/3 ml-3 border-2 border-black-500"
+                id="age"
+                name="age"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="mr-3" for="sex">Sex:</label>
+              <select
+                class="p-1 rounded-lg border-2 border-black-500"
+                id="sex"
+                name="sex"
+                required
+              >
+                <option value="0">Female</option>
+                <option value="1">Male</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="mr-3" for="cp">Chest Pain Type:</label>
+              <select
+                class="p-1 rounded-lg border-2 border-black-500"
+                id="cp"
+                name="cp"
+                required
+              >
+                <option value="0">Typical Angina</option>
+                <option value="1">Atypical Angina</option>
+                <option value="2">Non-Anginal Pain</option>
+                <option value="3">Asymptotic</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="trestbps">Resting Blood Pressure (trestbps):</label>
+              <input
+                type="text"
+                class="w-1/3 ml-3 border-2 border-black-500"
+                id="trestbps"
+                name="trestbps"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="chol">Serum Cholesterol (chol):</label>
+              <input
+                type="text"
+                class="w-1/3 ml-3 border-2 border-black-500"
+                id="chol"
+                name="chol"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="mr-3" for="fbs">Fasting Blood Sugar:</label>
+              <select
+                class="p-1 rounded-lg border-2 border-black-500"
+                id="fbs"
+                name="fbs"
+                required
+              >
+                <option value="0">False</option>
+                <option value="1">True</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="mr-3" for="restecg"
+                >Resting Electrocardiographic Results:</label
+              >
+              <select
+                class="p-1 rounded-lg border-2 border-black-500"
+                id="restecg"
+                name="restecg"
+                required
+              >
+                <option value="0">restecg</option>
+                <option value="1">hypertrophy</option>
+                <option value="2">normal</option>
+                <option value="3">abonrmality</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="mr-3" for="thalach"
+                >Maximum Heart Rate Achieved (thalach):</label
+              >
+              <input
+                type="text"
+                class="p-1 rounded-lg border-2 border-black-500"
+                id="thalach"
+                name="thalach"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="mr-3" for="exang">Exercise Induced Angina:</label>
+              <select
+                class="p-1 rounded-lg border-2 border-black-500"
+                id="exang"
+                name="exang"
+                required
+              >
+                <option value="0">Negative</option>
+                <option value="1">Postive</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="oldpeak"
+                >ST Depression Induced by Exercise Relative to Rest
+                (oldpeak):</label
+              >
+              <input
+                type="text"
+                class="p-1 rounded-lg border-2 border-black-500"
+                id="oldpeak"
+                name="oldpeak"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="slope">Slope of the Peak Exercise ST Segment:</label>
+              <select
+                class="p-1 rounded-lg border-2 border-black-500"
+                id="slope"
+                name="slope"
+                required
+              >
+                <option value="0">downsloping</option>
+                <option value="1">flat</option>
+                <option value="2">upsloaping</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="ca"
+                >Number of Major Vessels Colored by Fluoroscopy (ca - 0(None),
+                1, 2, 3):</label
+              >
+              <input
+                type="text"
+                class="p-1 rounded-lg border-2 border-black-500"
+                id="ca"
+                name="ca"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="thal">Thalassemia:</label>
+              <select
+                class="p-1 rounded-lg border-2 border-black-500"
+                id="thal"
+                name="thal"
+                required
+              >
+                <option value="0">fixed defect</option>
+                <option value="1">normal</option>
+                <option value="2">reverseable</option>
+              </select>
+            </div>
+
+            <button
+              type="submit"
+              class="bg-emerald-500 text-black px-4 py-2 rounded-full mt-4"
+            >
+             Check 
+            </button>
+          </form>
+          {% if prediction_text %}
+          <div class="mt-4">
+            <p>{{ prediction_text }}</p>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center items-end bg-emerald-600 w-1/3">
+      <img
+        class="object-contain w-[85%] ml-[-150px]"
+        src="https://purepng.com/public/uploads/large/purepng.com-doctordoctorsdoctors-and-nursesclinicianmedical-practitionernotepadfemale-142152685722142y8x.png"
+        alt="female doctor"
+      />
+    </div>
+  </body>
+</html>
